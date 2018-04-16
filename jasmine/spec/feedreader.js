@@ -27,24 +27,26 @@ $(function() {
         });
 
 
-        /* Write a test that loops through each feed
+        /* Test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
         it('has an url defined and it is not empty', function() {
             allFeeds.forEach(function(feed) {
+                expect(feed).toBeDefined();
                 expect(feed.url).toBeDefined();
                 expect(feed.url).not.toBe('');
             });
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* Test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
         it('has a name defined and it is not empty', function () {
             allFeeds.forEach(function (feed) {
+                expect(feed).toBeDefined();
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe('');
             });
@@ -61,6 +63,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
         it('element is hidden by default', function() {
+            expect($('body')).toBeDefined();
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
 
@@ -70,6 +73,7 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
          it('changes visibility when the menu icon is clicked', function() {
+             expect($('.menu-icon-link')).toBeDefined();
              $('.menu-icon-link').click();
              expect($('body').hasClass('menu-hidden')).toBe(false);
 
@@ -93,6 +97,7 @@ $(function() {
             });
         });
         it('are loaded when loadFeed() is called', function(done) {
+            expect($('.feed')).toBeDefined();
             expect($('.feed').children('.entry-link').length > 0).toBe(true);
             done();
         });
@@ -110,7 +115,7 @@ $(function() {
             loadFeed(0, function () {
                 html = $('.feed').html();
 
-                loadFeed(0, function() {
+                loadFeed(1, function() {
                     html2 = $('.feed').html();
                     done();
                 });
@@ -118,6 +123,7 @@ $(function() {
         });
         
         it('actually change the content', function (done) {
+            console.log(html, html2)
             expect(html).not.toEqual(html2);
             done();
         });
