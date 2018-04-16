@@ -100,7 +100,7 @@ $(function() {
         });
         it('are loaded when loadFeed() is called', function(done) {
             expect($('.feed')).toBeDefined();
-            expect($('.feed').children('.entry-link').length > 0).toBe(true);
+            expect($('.feed .entry-link .entry').length > 0).toBe(true);
             done();
         });
     });
